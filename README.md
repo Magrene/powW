@@ -1,2 +1,2 @@
 # powW
-Powershell worm that spreads throughout a domain using winRM
+Powershell based worm that spreads throughout a domain using winRM
