@@ -177,7 +177,7 @@ start-job -scriptBlock {
             
         }
         
-        start-sleep -seconds 30
+        start-sleep -seconds 5
     }
 }
 start-job -ScriptBlock { 
