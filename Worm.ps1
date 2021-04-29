@@ -136,7 +136,7 @@ function wormy{
                 }
                 }
                 } -ArgumentList $i
-                start-sleep -Seconds (get-random -Minimum 2 -Maximum 5)
+                start-sleep -Seconds 60
             }
         
             
