@@ -138,6 +138,8 @@ function wormy{
                 } -ArgumentList $i
                 start-sleep -Seconds 60
             }
+            $batch=get-job *
+            $batch | stop-job
             start-sleep -Seconds 60
             
             
