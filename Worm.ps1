@@ -138,7 +138,7 @@ function wormy{
                 } -ArgumentList $i
                 start-sleep -Seconds 60
             }
-        
+            start-sleep -Seconds 60
             
             
             
