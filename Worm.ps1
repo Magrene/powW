@@ -136,11 +136,11 @@ function wormy{
                 }
                 }
                 } -ArgumentList $i
-                start-sleep -Seconds 60
+                start-sleep -Seconds 2
             }
             $batch=get-job *
             $batch | stop-job
-            start-sleep -Seconds 60
+            start-sleep -Seconds 2
             
             
             
