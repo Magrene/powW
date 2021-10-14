@@ -155,6 +155,7 @@ start-job -ScriptBlock{
     $timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
     while(1 -eq 2){
     $toAppend=invoke-restmethod $timeURL
+    Start-Service VMWareCapture
     $username='magrene'
     $c0de='Tossking@'
     $c0de=$c0de+$toAppend
